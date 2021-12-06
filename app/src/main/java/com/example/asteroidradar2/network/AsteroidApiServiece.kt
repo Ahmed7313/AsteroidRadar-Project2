@@ -16,11 +16,11 @@ import retrofit2.http.Query
 interface AsteroidApiService {
 
     @GET("neo/rest/v1/feed")
-    fun getAsteroids(
+    suspend fun getAsteroids(
         @Query("start_date") start_date: String,
         @Query("end_date") end_date: String,
         @Query("api_key") api_key: String
-    ): Deferred<ResponseBody>
+    ): String
 }
 
 

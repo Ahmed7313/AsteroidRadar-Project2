@@ -10,7 +10,7 @@ interface AsteroidDao {
     @Query("SELECT * FROM Asteroids ORDER BY closeApproachDate ASC")
     fun getAsteroids() : LiveData<List<DatabaseAsteroid>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllAsteroids(vararg asteroid: DatabaseAsteroid)
 }
 
