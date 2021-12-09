@@ -29,4 +29,5 @@ class AsteroidsRepository(private val database: AsteroidDatabase) {
             database.asteroidDao.insertAllAsteroids(*asteroidList.asDomainModel())
         }
     }
+
 }

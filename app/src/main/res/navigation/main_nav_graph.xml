@@ -4,25 +4,26 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
 
+
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.asteroidradar2.main.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        android:label="MainFragment" >
         <action
-            android:id="@+id/action_showDetail"
+            android:id="@+id/action_mainFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.udacity.asteroidradar.detail.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail">
+        android:name="com.example.asteroidradar2.detail.DetailFragment"
+        android:label="DetailFragment"
+        >
 
         <argument
             android:name="selectedAsteroid"
-            app:argType="com.example.asteroidradar2.domain.Asteroid"/>
+            app:argType="com.example.asteroidradar2.domain.Asteroid" />
     </fragment>
+
 
 </navigation>

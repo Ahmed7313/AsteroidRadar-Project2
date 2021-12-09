@@ -10,55 +10,48 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.asteroidradar2.R
 import com.example.asteroidradar2.databinding.AsteroidListItemBinding
 import com.example.asteroidradar2.domain.Asteroid
-import com.example.asteroidradar2.main.AsteroidAdapter.ViewHolder.Companion.from
 
-class AsteroidAdapter : ListAdapter<Asteroid, AsteroidAdapter.ViewHolder>(AsteroidDiffCallback()){
+class AsteroidAdapter (val onClickListener: OnClickListener): ListAdapter<Asteroid,AsteroidAdapter.AsteroidViewHolder>(DiffCallback) {
 
+    class AsteroidViewHolder(var binding:AsteroidListItemBinding): RecyclerView.ViewHolder(binding.root) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return from(parent)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
-    }
-
-
-    class ViewHolder private constructor(var binding: AsteroidListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        var asteroidName : TextView = binding.asteroidNameListItem
-        var approchDate : TextView = binding.asteroidApproachDateListItem
-        var asteroidIsHazardous : ImageView = binding.asteroidIsHazardousListItem
-
-        fun bind(item: Asteroid) {
-            asteroidName.text = item.codename
-            approchDate.text = item.closeApproachDate
-            if (item.isPotentiallyHazardous) {
-                asteroidIsHazardous.setImageResource(R.drawable.asteroid_hazardous)
-            } else {
-                asteroidIsHazardous.setImageResource(R.drawable.asteroid_safe)
-            }
+        fun bind(asteroid: Asteroid){
+            binding.asteroid=asteroid
+            binding.executePendingBindings()
         }
 
-        companion object {
-            fun from(parent: ViewGroup): ViewHolder {
-                val layoutInflater  = LayoutInflater.from(parent.context)
-                val binding = AsteroidListItemBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
-            }
-        }
     }
 
-    class AsteroidDiffCallback :
-        DiffUtil.ItemCallback<Asteroid>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AsteroidViewHolder {
+        var inflater= LayoutInflater.from(parent.context)
+        var view= AsteroidListItemBinding.inflate(inflater, parent, false)
+        return AsteroidViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: AsteroidViewHolder, position: Int) {
+        var asteroid= getItem(position)
+        holder.itemView.setOnClickListener{
+            onClickListener.onClick(asteroid)
+        }
+        holder.bind(asteroid)
+
+    }
+
+
+    companion object DiffCallback : DiffUtil.ItemCallback<Asteroid>() {
         override fun areItemsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem === newItem
         }
 
         override fun areContentsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
-            return oldItem == newItem
+            return oldItem.id == newItem.id
         }
+
+    }
+
+
+    class OnClickListener(val clickListener: (asteroid:Asteroid) -> Unit){
+        fun onClick(asteroid: Asteroid)= clickListener(asteroid)
     }
 
 }
-

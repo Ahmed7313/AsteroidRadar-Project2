@@ -1,4 +1,4 @@
-package com.udacity.asteroidradar.detail
+package com.example.asteroidradar2.detail
 
 
 import android.os.Bundle
@@ -16,9 +16,9 @@ class DetailFragment : Fragment() {
         val binding = FragmentDetailBinding.inflate(inflater)
         binding.lifecycleOwner = this
 
-       // val asteroid = DetailFragmentArgs.fromBundle(arguments!!).selectedAsteroid
+        val asteroid = DetailFragmentArgs.fromBundle(requireArguments()).selectedAsteroid
 
-    //    binding.asteroid = asteroid
+        binding.asteroid = asteroid
 
         binding.helpButton.setOnClickListener {
             displayAstronomicalUnitExplanationDialog()

@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Ahmed/Documents/GitHub/AsteroidRadar-Project2/app/src/main/res/layout/asteroid_list_item.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/Ahmed/Documents/GitHub/AsteroidRadar-Project2/app/src/main/res/drawable-v24/ic_connection_error.xml" value="0.2890625" />
+        <entry key="..\:/Users/Ahmed/Documents/GitHub/AsteroidRadar-Project2/app/src/main/res/drawable-v24/loading_img.xml" value="0.2890625" />
+        <entry key="..\:/Users/Ahmed/Documents/GitHub/AsteroidRadar-Project2/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Ahmed/Documents/GitHub/AsteroidRadar-Project2/app/src/main/res/layout/asteroid_list_item.xml" value="0.25" />
+        <entry key="..\:/Users/Ahmed/Documents/GitHub/AsteroidRadar-Project2/app/src/main/res/layout/fragment_detail.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Ahmed/Documents/GitHub/AsteroidRadar-Project2/app/src/main/res/layout/fragment_main.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Ahmed/OneDrive/Desktop/AsteroidRadar2/app/src/main/res/layout/activity_main.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Ahmed/OneDrive/Desktop/AsteroidRadar2/app/src/main/res/layout/asteroid_list_item.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Ahmed/OneDrive/Desktop/AsteroidRadar2/app/src/main/res/layout/fragment_detail.xml" value="0.25885416666666666" />
