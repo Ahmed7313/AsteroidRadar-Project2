@@ -1,6 +1,7 @@
 package com.example.asteroidradar2.main
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.asteroidradar2.Constants
 import com.example.asteroidradar2.PictureOfDay
@@ -40,7 +41,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         viewModelScope.launch {
-            repository.refreshAsteroids()
+            try {
+                repository.refreshAsteroids()
+
+            }catch (e: Exception){
+                Log.e(e.message, "Errorr in getting asteroids from Cach")
+            }
         }
         getImageOfTheDay()
     }
