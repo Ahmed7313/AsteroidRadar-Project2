@@ -1,12 +1,10 @@
 package com.example.asteroidradar2
 
-import android.accounts.AccountManager.get
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import com.example.asteroidradar2.main.ImageApiStatus
-import com.example.asteroidradar2.network.ImageApiService
 import com.squareup.picasso.Picasso
 
 

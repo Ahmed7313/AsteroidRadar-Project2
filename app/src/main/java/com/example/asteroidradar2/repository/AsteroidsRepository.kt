@@ -9,7 +9,6 @@ import com.udacity.asteroidradar.database.AsteroidDatabase
 import com.udacity.asteroidradar.database.asDomainModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import okhttp3.ResponseBody
 import org.json.JSONObject
 import java.util.ArrayList
 
@@ -22,9 +21,9 @@ class AsteroidsRepository(private val database: AsteroidDatabase) {
     suspend fun refreshAsteroids(startDate: String = getToday(), endDate: String = getSeventhDay()){
         withContext(Dispatchers.IO){
             var asteroidList: ArrayList<Asteroid>
-            val json = Network.service.getAsteroids(startDate, endDate, Constants.API_KEY)
-            val obj = JSONObject(json)
-            asteroidList= parseAsteroidsJsonResult(obj)
+            val response = Network.service.getAsteroids(startDate, endDate, Constants.API_KEY)
+            val jsonObj = JSONObject(response)
+            asteroidList= parseAsteroidsJsonResult(jsonObj)
 
             database.asteroidDao.insertAllAsteroids(*asteroidList.asDomainModel())
         }

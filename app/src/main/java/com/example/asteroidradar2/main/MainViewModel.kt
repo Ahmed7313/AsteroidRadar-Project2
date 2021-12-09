@@ -3,7 +3,6 @@ package com.example.asteroidradar2.main
 import android.app.Application
 import androidx.lifecycle.*
 import com.example.asteroidradar2.Constants
-import com.example.asteroidradar2.Image
 import com.example.asteroidradar2.PictureOfDay
 import com.example.asteroidradar2.domain.Asteroid
 import com.example.asteroidradar2.network.ImageApi
@@ -23,8 +22,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val navigateToSelectedAsteroid: LiveData<Asteroid>
         get() = _navigateToSelectedAsteroid
 
-    private val _image = MutableLiveData<Image>()
-    val image: LiveData<Image>
+    private val _image = MutableLiveData<PictureOfDay>()
+    val image: LiveData<PictureOfDay>
         get() = _image
 
     fun displayPropertyDetails(asteroid: Asteroid) {
@@ -57,7 +56,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 _status.value = ImageApiStatus.DONE
             } catch (e: Exception) {
                 _status.value=ImageApiStatus.ERROR
-                _image.value= Image("","","","","","","","")
+                _image.value= PictureOfDay("","","","","","","","")
             }
         }
     }

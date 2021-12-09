@@ -1,7 +1,5 @@
 package com.example.asteroidradar2.network
 
-import com.example.asteroidradar2.Constants
-import com.example.asteroidradar2.Image
 import com.example.asteroidradar2.PictureOfDay
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -25,7 +23,7 @@ private val retrofitImage= Retrofit.Builder()
 interface ImageApiService {
 
     @GET("planetary/apod")
-    suspend fun getImageOfTheDay(@Query("api_key")key: String): Image
+    suspend fun getImageOfTheDay(@Query("api_key")key: String): PictureOfDay
 
 }
 
