@@ -1,4 +1,4 @@
-- - # Asteriod
+- - # Asteroid Radar App
 
     Asteroid is an application that makes use of free open source API provided by NASA JPL asteroid team.
 
